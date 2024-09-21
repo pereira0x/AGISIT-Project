@@ -1,7 +1,7 @@
 {
-  "name": "ethereumservice",
+  "name": "solanaservice",
   "version": "1.0.0",
-  "description": "Ethereum purchase service",
+  "description": "Solana purchase service",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
