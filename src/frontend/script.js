@@ -7,19 +7,27 @@ const bgColors = [
 const crypto = ["Bitcoin", "Solana", "Ethereum", "Monero"];
 let i = 0;
 document.getElementById("buy-bitcoin").addEventListener("click", function () {
-  buy(1, "Bitcoin");
+  let quantity = document.getElementById("quantity-bitcoin").value;
+  quantity = quantity === "" ? 0.1 : quantity;
+  buy(quantity, "Bitcoin");
 });
 
 document.getElementById("buy-solana").addEventListener("click", function () {
-  buy(1, "Solana");
+  let quantity = document.getElementById("quantity-solana").value;
+  quantity = quantity === "" ? 0.1 : quantity;
+  buy(quantity, "Solana");
 });
 
 document.getElementById("buy-ethereum").addEventListener("click", function () {
-  buy(1, "Ethereum");
+    let quantity = document.getElementById("quantity-ethereum").value;
+    quantity = quantity === "" ? 0.1 : quantity;
+  buy(quantity, "Ethereum");
 });
 
 document.getElementById("buy-monero").addEventListener("click", function () {
-  buy(1, "Monero");
+    let quantity = document.getElementById("quantity-monero").value;
+    quantity = quantity === "" ? 0.1 : quantity;
+  buy(quantity, "Monero");
 });
 
 function buy(quantity, currency) {
