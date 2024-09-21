@@ -7,49 +7,39 @@ var bgColors = [
   i = 0;
 
 document.getElementById("buy-bitcoin").addEventListener("click", function () {
-  Toastify({
-    text: "Bought Bitcoin",
-    duration: 3000,
-    close: i % 3 ? true : false,
-    style: {
-      background: bgColors[0],
-    },
-  }).showToast();
-  i++;
+  buy(1, "Bitcoin");
 });
 
 document.getElementById("buy-solana").addEventListener("click", function () {
-  Toastify({
-    text: "Bought Solana",
-    duration: 3000,
-    close: i % 3 ? true : false,
-    style: {
-      background: bgColors[1],
-    },
-  }).showToast();
-  i++;
+  buy(1, "Solana");
 });
 
 document.getElementById("buy-ethereum").addEventListener("click", function () {
-  Toastify({
-    text: "Bought Ethereum",
-    duration: 3000,
-    close: i % 3 ? true : false,
-    style: {
-      background: bgColors[2],
-    },
-  }).showToast();
-  i++;
+  buy(1, "Ethereum");
 });
 
 document.getElementById("buy-monero").addEventListener("click", function () {
-  Toastify({
-    text: "Bought Monero",
-    duration: 3000,
-    close: i % 3 ? true : false,
-    style: {
-      background: bgColors[3],
-    },
-  }).showToast();
-  i++;
+  buy(1, "Monero");
 });
+
+function buy(quantity, currency) {
+  const url = `http://localhost:8080/?quantity=${quantity}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      // display toast
+      console.log(data);
+      Toastify({
+        text: `Bought ${quantity} ${currency} for $${data.price}`,
+        duration: 3000,
+        close: i % 3 ? true : false,
+        style: {
+          background: bgColors[i % 4],
+        },
+      }).showToast();
+      i++;
+    }
+  );
+}
+
+
