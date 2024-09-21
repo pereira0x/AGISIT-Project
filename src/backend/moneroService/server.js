@@ -34,11 +34,11 @@ app.use(function (req, res, next) {
 });
 
 app.get("/", (req, res) => {
-  const quantity = parseInt(req.query["quantity"]);
+  const quantity = parseFloat(req.query["quantity"]);
 
-  const currentSolanaPrice =
+  const currentMoneroPrice =
     Math.round(Math.random() * 10000.75 + 80 * 100) / 100;
-  const price = quantity * currentSolanaPrice;
+  const price = quantity * currentMoneroPrice;
   writeToDatastoreTemporary(
     `A ${req.query["quantity"]}x volume of Monero was requested. The price is ${price}$.`
   );

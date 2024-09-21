@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
 });
 
 app.get("/", (req, res) => {
-  const quantity = parseInt(req.query["quantity"]);
+  const quantity = parseFloat(req.query["quantity"]);
 
   const currentSolanaPrice =
     Math.round(Math.random() * 10000.75 + 100 * 100) / 100;

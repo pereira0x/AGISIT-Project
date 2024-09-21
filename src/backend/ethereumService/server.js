@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
 });
 
 app.get("/", (req, res) => {
-  const quantity = parseInt(req.query["quantity"]);
+  const quantity = parseFloat(req.query["quantity"]);
 
   const currentEthereumPrice =
     Math.round(Math.random() * 1000.75 + 2000 * 100) / 100;
