@@ -36,7 +36,9 @@ app.use(function (req, res, next) {
 app.get("/", (req, res) => {
   const quantity = parseInt(req.query["quantity"]);
 
-  const price = quantity * 2100;
+  const currentEthereumPrice =
+    Math.round(Math.random() * 1000.75 + 2000 * 100) / 100;
+  const price = quantity * currentEthereumPrice;
   writeToDatastoreTemporary(
     `A ${req.query["quantity"]}x volume of Ethereum was requested. The price is ${price}$.`
   );
