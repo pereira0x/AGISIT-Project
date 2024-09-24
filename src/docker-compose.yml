@@ -1,0 +1,24 @@
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - bitcoin-service
+      - ethereum-service
+      - monero-service
+      - solana-service
+
+  bitcoin-service:
+    build: ./backend/bitcoinService
+
+  ethereum-service:
+    build: ./backend/ethereumService
+
+  monero-service:
+    build: ./backend/moneroService
+
+  solana-service:
+    build: ./backend/solanaService
+

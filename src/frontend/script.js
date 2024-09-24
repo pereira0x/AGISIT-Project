@@ -31,9 +31,8 @@ document.getElementById("buy-monero").addEventListener("click", function () {
 });
 
 function buy(quantity, currency) {
-  // FIXME: later change to a custom backend
-  // e.g: cfetch(`/api/${crypto}-service?quantity=${quantity}`)
-  const url = `http://localhost:8080/?quantity=${quantity}`;
+  const url = `/api/${currency.toLowerCase()}-service?quantity=${quantity}`;
+  console.log(url);
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
