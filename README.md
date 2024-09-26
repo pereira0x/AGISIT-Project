@@ -9,9 +9,11 @@ A simple webpage to purchase cryptocurrencies (Bitcoin, Ethereum, Solana, and Mo
   - [Introduction](#introduction)
   - [Features](#features)
   - [Project Structure](#project-structure)
-  - [Installation and Usage](#installation-and-usage)
-    - [Backend](#backend)
-    - [Frontend](#frontend)
+  - [Prerequisites](#prerequisites)
+    - [For Development](#for-development)
+    - [For Local Usage](#for-local-usage)
+  - [Running Locally](#running-locally)
+    - [Running Everything](#running-everything)
 
 ## Introduction
 
@@ -28,51 +30,60 @@ BuyCrypto is a minimalist web application that allows users to input an amount a
 
 ```bash
 .
-├── backend
-│   ├── bitcoinService
-│   │   ├── server.js
-│   │   └── package.json
-│   ├── ethereumService
-│   │   ├── server.js
-│   │   └── package.json
-│   ├── moneroService
-│   │   ├── server.js
-│   │   └── package.json
-│   ├── solanaService
-│   │   ├── server.js
-│   │   └── package.json
-├── frontend
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
-└── README.md
+├── README.md
+└── src
+    ├── backend
+    │   ├── bitcoinService
+    │   │   ├── Dockerfile
+    │   │   ├── package.json
+    │   │   ├── package-lock.json
+    │   │   └── server.js
+    │   ├── ethereumService
+    │   │   ├── Dockerfile
+    │   │   ├── package.json
+    │   │   ├── package-lock.json
+    │   │   └── server.js
+    │   ├── moneroService
+    │   │   ├── Dockerfile
+    │   │   ├── package.json
+    │   │   ├── package-lock.json
+    │   │   └── server.js
+    │   └── solanaService
+    │       ├── Dockerfile
+    │       ├── package.json
+    │       ├── package-lock.json
+    │       └── server.js
+    ├── docker-compose.yml
+    └── frontend
+        ├── Caddyfile
+        ├── Dockerfile
+        ├── index.html
+        ├── script.js
+        └── styles.css
 ```
 
-## Installation and Usage
+## Prerequisites
 
-### Backend
+### For Development
 
-1. Navigate to the `backend` directory.
+- [Node.js](https://nodejs.org/en/download/)
+- [npm](https://www.npmjs.com/get-npm)
+
+### For Local Usage
+
+ - [Docker](https://docs.docker.com/get-docker/)
+ - [Docker Compose](https://docs.docker.com/compose/install/)
+
+
+## Running Locally
+
+To run the project locally, follow the steps below:
+
+### Running Everything
+
+To run the entire project (microservices and frontend) locally, we use docker and docker-compose. To do so, run the following commands (you may need to use `sudo`):
+
 ```bash
-cd backend
+cd src
+[sudo] docker compose up -d
 ```
-
-2. Install the required dependencies for each cryptocurrency service.
-```bash
-cd <cryptocurrency>Service
-npm install
-```
-
-3. Start the server for each cryptocurrency service.
-```bash
-node server.js
-```
-
-### Frontend
-
-1. Navigate to the `frontend` directory.
-```bash
-cd frontend
-```
-
-2. Open the `index.html` file in your browser. You can also use a live server extension in your code editor.

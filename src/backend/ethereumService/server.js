@@ -45,6 +45,6 @@ app.get("/", (req, res) => {
   res.send({ price });
 });
 
-app.listen(8080, () => {
-  writeToDatastoreTemporary("ethereumService listening at port 8080");
+app.listen(80, () => {
+  writeToDatastoreTemporary("ethereumService listening at port 80");
 });

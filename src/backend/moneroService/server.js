@@ -45,6 +45,6 @@ app.get("/", (req, res) => {
   res.send({ price });
 });
 
-app.listen(8080, () => {
-  writeToDatastoreTemporary("moneroService listening at port 8080");
+app.listen(80, () => {
+  writeToDatastoreTemporary("moneroService listening at port 80");
 });
