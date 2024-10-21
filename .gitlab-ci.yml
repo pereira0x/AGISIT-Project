@@ -12,6 +12,8 @@ build-bitcoin-service:
       --destination "docker.io/pereira0x/bitcoin-service:latest"
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/backend/bitcoinService/**/*
 
 build-ethereum-service:
   stage: build
@@ -27,7 +29,9 @@ build-ethereum-service:
       --destination "docker.io/pereira0x/ethereum-service:latest"
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
-  
+      changes:
+        - src/backend/ethereumService/**/*
+
 build-solana-service:
   stage: build
   image:
@@ -42,6 +46,8 @@ build-solana-service:
       --destination "docker.io/pereira0x/solana-service:latest"
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/backend/solanaService/**/*
 
 build-monero-service:
   stage: build
@@ -57,6 +63,8 @@ build-monero-service:
       --destination "docker.io/pereira0x/monero-service:latest"
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/backend/moneroService/**/*
 
 build-frontend-service:
   stage: build
@@ -72,3 +80,5 @@ build-frontend-service:
       --destination "docker.io/pereira0x/frontend-service:latest"
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/frontend/**/*
