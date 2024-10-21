@@ -14,22 +14,22 @@
 
     handle /api/bitcoin-service {
         uri strip_prefix /api/bitcoin-service
-        reverse_proxy bitcoin-service
+        reverse_proxy {$BITCOIN_SERVICE}
     }
 
     handle /api/ethereum-service {
         uri strip_prefix /api/ethereum-service
-        reverse_proxy ethereum-service
+        reverse_proxy {$ETHEREUM_SERVICE}
     }
 
     handle /api/monero-service {
         uri strip_prefix /api/monero-service
-        reverse_proxy monero-service
+        reverse_proxy {$MONERO_SERVICE}
     }
 
     handle /api/solana-service {
         uri strip_prefix /api/solana-service
-        reverse_proxy solana-service
+        reverse_proxy {$SOLANA_SERVICE}
     }
 
     handle {

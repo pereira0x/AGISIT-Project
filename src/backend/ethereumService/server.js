@@ -1,12 +1,18 @@
 const { Pool } = require("pg");
 
+const port = process.env.DB_PORT;
+const host = process.env.DB_HOST;
+const user = process.env.DB_USER;
+const password = process.env.DB_PASSWORD;
+const database = process.env.DB_DATABASE;
+
 // Set up the connection pool
 const pool = new Pool({
-  user: "crypto",
-  host: "postgres", // Assuming you're running it locally with Docker
-  database: "crypto",
-  password: "password",
-  port: 5432,
+  user: user,
+  host: host,
+  database: database,
+  password: password,
+  port: port,
 });
 
 // Function to write to Postgres database
