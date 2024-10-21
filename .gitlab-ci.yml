@@ -9,9 +9,9 @@ build-bitcoin-service:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/bitcoinService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/bitcoinService/Dockerfile"
-      --destination "docker.io/pereira0x/bitcoin-service:${CI_COMMIT_TAG}"
+      --destination "docker.io/pereira0x/bitcoin-service:latest"
   rules:
-    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == "master"
 
 build-ethereum-service:
   stage: build
@@ -24,9 +24,9 @@ build-ethereum-service:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/ethereumService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/ethereumService/Dockerfile"
-      --destination "docker.io/pereira0x/ethereum-service:${CI_COMMIT_TAG}"
+      --destination "docker.io/pereira0x/ethereum-service:latest"
   rules:
-    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == "master"
   
 build-solana-service:
   stage: build
@@ -39,9 +39,9 @@ build-solana-service:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/solanaService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/solanaService/Dockerfile"
-      --destination "docker.io/pereira0x/solana-service:${CI_COMMIT_TAG}"
+      --destination "docker.io/pereira0x/solana-service:latest"
   rules:
-    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == "master"
 
 build-monero-service:
   stage: build
@@ -54,9 +54,9 @@ build-monero-service:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/backend/moneroService"
       --dockerfile "${CI_PROJECT_DIR}/src/backend/moneroService/Dockerfile"
-      --destination "docker.io/pereira0x/monero-service:${CI_COMMIT_TAG}"
+      --destination "docker.io/pereira0x/monero-service:latest"
   rules:
-    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == "master"
 
 build-frontend-service:
   stage: build
@@ -69,6 +69,6 @@ build-frontend-service:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/src/frontend"
       --dockerfile "${CI_PROJECT_DIR}/src/frontend/Dockerfile"
-      --destination "docker.io/pereira0x/frontend-service:${CI_COMMIT_TAG}"
+      --destination "docker.io/pereira0x/frontend-service:latest"
   rules:
-    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == "master"
