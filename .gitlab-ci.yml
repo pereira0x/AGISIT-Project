@@ -1,3 +1,7 @@
+stages:
+  - build
+  - deploy
+
 build-bitcoin-service:
   stage: build
   image:
@@ -82,3 +86,14 @@ build-frontend-service:
     - if: $CI_COMMIT_BRANCH == "master"
       changes:
         - src/frontend/**/*
+
+deploy-frontend-service:
+    stage: deploy
+    image:
+      name: bitnami/kubectl:latest
+      entrypoint: [""]
+    script:
+    - kubectl delete pod --selector="app=frontend" --namespace=application
+    trigger:
+      job: build-frontend-service
+    strategy: depend
