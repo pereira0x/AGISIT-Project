@@ -93,8 +93,7 @@ deploy-frontend-service:
     name: bitnami/kubectl:latest
     entrypoint: [""]
   script:
-    - echo $KUBE_CONFIG_DATA > ~/.kube/config
-    - cat ~/.kube/config
+    - export KUBECONFIG=$KUBE_CONFIG_DATA
     - kubectl delete pod --selector="app=frontend" --namespace=application
   when: manual
   rules:
