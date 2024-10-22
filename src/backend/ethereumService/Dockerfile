@@ -14,6 +14,6 @@ CMD [ "node", "server.js" ]
 
 ENV DB_USER=crypto
 ENV DB_PASSWORD=password
-ENV DB_HOST=postgres
+ENV DB_HOST=database
 ENV DB_PORT=5432
 ENV DB_NAME=crypto
