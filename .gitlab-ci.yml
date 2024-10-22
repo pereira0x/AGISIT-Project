@@ -94,7 +94,7 @@ deploy-frontend-service:
     entrypoint: [""]
   script:
     - kubectl delete pod --selector="app=frontend" --namespace=application
-    when: manual
+  when: manual
 
 deploy-bitcoin-service:
     stage: deploy
