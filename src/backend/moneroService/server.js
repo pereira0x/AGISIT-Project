@@ -28,7 +28,7 @@ async function writeToPostgres(price) {
     await pool.query(query);
     console.log("Log entry saved to Postgres:", logText);
   } catch (error) {
-    console.error("Error writing log entry to Postgres:", error);
+    console.error("Error: writing log entry to Postgres:", error);
   }
 }
 
