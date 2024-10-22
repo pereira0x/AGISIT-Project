@@ -94,6 +94,7 @@ deploy-frontend-service:
     entrypoint: [""]
   script:
     - echo $KUBE_CONFIG_DATA > ~/.kube/config
+    - cat ~/.kube/config
     - kubectl delete pod --selector="app=frontend" --namespace=application
   when: manual
   rules:
