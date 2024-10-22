@@ -93,6 +93,7 @@ deploy-frontend-service:
     name: bitnami/kubectl:latest
     entrypoint: [""]
   script:
+    - echo $KUBE_CONFIG_DATA > ~/.kube/config
     - kubectl delete pod --selector="app=frontend" --namespace=application
   when: manual
   rules:
@@ -145,6 +146,7 @@ deploy-monero-service:
       name: bitnami/kubectl:latest
       entrypoint: [""]
     script:
+    - echo $KUBE_CONFIG_DATA > ~/.kube/config
     - kubectl delete pod --selector="app=monero" --namespace=application
     when: manual
     rules:
