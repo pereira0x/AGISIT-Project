@@ -95,6 +95,10 @@ deploy-frontend-service:
   script:
     - kubectl delete pod --selector="app=frontend" --namespace=application
   when: manual
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/frontend/**/*
 
 deploy-bitcoin-service:
     stage: deploy
@@ -104,6 +108,10 @@ deploy-bitcoin-service:
     script:
     - kubectl delete pod --selector="app=bitcoin" --namespace=application
     when: manual
+    rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/backend/bitcoinService/**/*
 
 deploy-ethereum-service:
     stage: deploy
@@ -113,6 +121,10 @@ deploy-ethereum-service:
     script:
     - kubectl delete pod --selector="app=ethereum" --namespace=application
     when: manual
+    rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/backend/ethereumService/**/*
   
 deploy-solana-service:
     stage: deploy
@@ -122,6 +134,10 @@ deploy-solana-service:
     script:
     - kubectl delete pod --selector="app=solana" --namespace=application
     when: manual
+    rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/backend/solanaService/**/*
 
 deploy-monero-service:
     stage: deploy
@@ -131,3 +147,7 @@ deploy-monero-service:
     script:
     - kubectl delete pod --selector="app=monero" --namespace=application
     when: manual
+    rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+      changes:
+        - src/backend/moneroService/**/*
