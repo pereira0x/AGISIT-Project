@@ -94,7 +94,40 @@ deploy-frontend-service:
     entrypoint: [""]
   script:
     - kubectl delete pod --selector="app=frontend" --namespace=application
-  needs:
-    - build-frontend-service
-  rules:
-    - if: $CI_COMMIT_BRANCH == "master"
+    when: manual
+
+deploy-bitcoin-service:
+    stage: deploy
+    image:
+      name: bitnami/kubectl:latest
+      entrypoint: [""]
+    script:
+    - kubectl delete pod --selector="app=bitcoin" --namespace=application
+    when: manual
+
+deploy-ethereum-service:
+    stage: deploy
+    image:
+      name: bitnami/kubectl:latest
+      entrypoint: [""]
+    script:
+    - kubectl delete pod --selector="app=ethereum" --namespace=application
+    when: manual
+  
+deploy-solana-service:
+    stage: deploy
+    image:
+      name: bitnami/kubectl:latest
+      entrypoint: [""]
+    script:
+    - kubectl delete pod --selector="app=solana" --namespace=application
+    when: manual
+
+deploy-monero-service:
+    stage: deploy
+    image:
+      name: bitnami/kubectl:latest
+      entrypoint: [""]
+    script:
+    - kubectl delete pod --selector="app=monero" --namespace=application
+    when: manual
