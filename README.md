@@ -110,7 +110,23 @@ BuyCrypto is a minimalist web application that allows users to input an amount a
 
 ## Running Locally
 
-To run the project locally, follow the steps below:
+To get the needed required dependencies, run the following commands:
+
+```bash
+nix develop flake.nix
+```
+
+To open zsh shell with the required dependencies, run the following command:
+
+```bash
+nix develop flake.nix -c zsh
+```
+
+If you want to open an instance of vscode with the required dependencies, run the following command:
+
+```bash
+nix develop flake.nix -c code .
+```
 
 ### Running Everything
 
