@@ -656,6 +656,10 @@ dashboardProviders:
       folder: 'Kubernetes'
       options:
         path: /var/lib/grafana/dashboards/kubernetes
+    - name: services
+      folder: 'Services'
+      options:
+        path: /var/lib/grafana/dashboards/services
 
 ## Configure grafana dashboard to import
 ## NOTE: To use dashboards you must also enable/configure dashboardProviders
@@ -667,6 +671,9 @@ dashboards:
   kubernetes:
      gke-cluster-dashboard:
        url: https://gist.githubusercontent.com/pereira0x/93ddb197c390ea5b4bd67f1749876564/raw/125983b621c4a5a9fc20640521fb634096f5558e/GKE-dashboard.json
+  services:
+    buycrypto-dashboard:
+      url: https://gist.githubusercontent.com/pereira0x/c32f802e085b7b77d962ca1b1b5dbbe2/raw/535e829e8759387b9e22687a849cf0967a60ab64/buycrypto-dashboard.json
 
 ## Reference to external ConfigMap per provider. Use provider name as key and ConfigMap name as value.
 ## A provider dashboards must be defined either by external ConfigMaps or in values.yaml, not in both.

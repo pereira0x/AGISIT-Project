@@ -54,6 +54,24 @@ app.get("/", async (req, res) => {
   res.send({ price });
 });
 
+app.get("/metrics", async (req, res) => {
+  const query = {
+    text: "SELECT COUNT(*) FROM transactions WHERE log LIKE 'A volume of Solana was requested%'",
+  };
+
+  try {
+    const result = await pool.query(query);
+    const count = parseInt(result.rows[0].count);
+    let metrics = "";
+    metrics += `solana_service_transaction_count ${count}\n`;
+    res.send(metrics);
+  } catch (error) {
+    console.error("Error reading log entries from Postgres:", error);
+    res.send("");
+  }
+});
+
+
 app.listen(80, () => {
   console.log("solanaService listening at port 80");
 });

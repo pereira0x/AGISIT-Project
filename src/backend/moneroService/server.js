@@ -54,6 +54,23 @@ app.get("/", async (req, res) => {
   res.send({ price });
 });
 
+app.get("/metrics", async (req, res) => {
+  const query = {
+    text: "SELECT COUNT(*) FROM transactions WHERE log LIKE 'A volume of Monero was requested%'",
+  };
+
+  try {
+    const result = await pool.query(query);
+    const count = parseInt(result.rows[0].count);
+    let metrics = "";
+    metrics += `monero_service_transaction_count ${count}\n`;
+    res.send(metrics);
+  } catch (error) {
+    console.error("Error reading log entries from Postgres:", error);
+    res.send('');
+  }
+});
+
 app.listen(80, () => {
   console.log("moneroService listening at port 80");
 });
