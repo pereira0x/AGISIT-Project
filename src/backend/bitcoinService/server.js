@@ -54,6 +54,15 @@ app.get("/", async (req, res) => {
   res.send({ price });
 });
 
+/* app.get("/metrics", async (req, res) => {
+  const query = {
+    text: "SELECT COUNT(*) FROM transactions WHERE log LIKE 'A volume of Bitcoin was requested%'",
+  };
+
+  try {
+    const result = await pool
+ */
+
 app.listen(80, () => {
-  console.log("bitcoinService listening at port 80");
+  console.log("bitcoinService started listening at port 80");
 });

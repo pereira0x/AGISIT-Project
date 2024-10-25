@@ -93,8 +93,12 @@ deploy-frontend-service:
     name: bitnami/kubectl:latest
     entrypoint: [""]
   script:
-    - export KUBECONFIG=$KUBE_CONFIG_DATA
-    - kubectl delete pod --selector="app=frontend" --namespace=application
+      - gcloud auth activate-service-account --key-file=$gcp_key
+      - gcloud config set project agisit2425-project-g19
+      - gcloud config set container/cluster cluster-1
+      - gcloud config set compute/zone us-west1
+      - gcloud container clusters get-credentials agisit2425-project-g19-gke --region us-west1 --project agisit2425-project-g19
+      - kubectl delete pod --selector="app=frontend" --namespace=application
   when: manual
   rules:
     - if: $CI_COMMIT_BRANCH == "master"
@@ -107,7 +111,12 @@ deploy-bitcoin-service:
       name: bitnami/kubectl:latest
       entrypoint: [""]
     script:
-    - kubectl delete pod --selector="app=bitcoin" --namespace=application
+      - gcloud auth activate-service-account --key-file=$gcp_key
+      - gcloud config set project agisit2425-project-g19
+      - gcloud config set container/cluster cluster-1
+      - gcloud config set compute/zone us-west1
+      - gcloud container clusters get-credentials agisit2425-project-g19-gke --region us-west1 --project agisit2425-project-g19
+      - kubectl delete pod --selector="app=bitcoin" --namespace=application 
     when: manual
     rules:
     - if: $CI_COMMIT_BRANCH == "master"
@@ -120,7 +129,12 @@ deploy-ethereum-service:
       name: bitnami/kubectl:latest
       entrypoint: [""]
     script:
-    - kubectl delete pod --selector="app=ethereum" --namespace=application
+      - gcloud auth activate-service-account --key-file=$gcp_key
+      - gcloud config set project agisit2425-project-g19
+      - gcloud config set container/cluster cluster-1
+      - gcloud config set compute/zone us-west1
+      - gcloud container clusters get-credentials agisit2425-project-g19-gke --region us-west1 --project agisit2425-project-g19
+      - kubectl delete pod --selector="app=ethereum" --namespace=application 
     when: manual
     rules:
     - if: $CI_COMMIT_BRANCH == "master"
@@ -131,7 +145,6 @@ deploy-solana-service:
     stage: deploy
     image: google/cloud-sdk
     script:
-# Authenticate with GKE
       - gcloud auth activate-service-account --key-file=$gcp_key
       - gcloud config set project agisit2425-project-g19
       - gcloud config set container/cluster cluster-1
@@ -150,8 +163,12 @@ deploy-monero-service:
       name: bitnami/kubectl:latest
       entrypoint: [""]
     script:
-    - echo $KUBE_CONFIG_DATA > ~/.kube/config
-    - kubectl delete pod --selector="app=monero" --namespace=application
+      - gcloud auth activate-service-account --key-file=$gcp_key
+      - gcloud config set project agisit2425-project-g19
+      - gcloud config set container/cluster cluster-1
+      - gcloud config set compute/zone us-west1
+      - gcloud container clusters get-credentials agisit2425-project-g19-gke --region us-west1 --project agisit2425-project-g19
+      - kubectl delete pod --selector="app=monero" --namespace=application 
     when: manual
     rules:
     - if: $CI_COMMIT_BRANCH == "master"

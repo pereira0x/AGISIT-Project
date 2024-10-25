@@ -55,5 +55,5 @@ app.get("/", async (req, res) => {
 });
 
 app.listen(80, () => {
-  console.log("solanaService listening at port 80");
+  console.log("solanaService started listening at port 80");
 });
