@@ -129,16 +129,19 @@ deploy-ethereum-service:
   
 deploy-solana-service:
     stage: deploy
-    image:
-      name: bitnami/kubectl:latest
-      entrypoint: [""]
+    image: google/cloud-sdk
+    only:
+      - main
+    before_script:
+      - cat $gcp_key | docker login -u _json_key --password-stdin https://eu.gcr.io
     script:
-    - kubectl delete pod --selector="app=solana" --namespace=application
-    when: manual
-    rules:
-    - if: $CI_COMMIT_BRANCH == "master"
-      changes:
-        - src/backend/solanaService/**/*
+# Authenticate with GKE
+      - gcloud auth activate-service-account --key-file=$gcp_key
+      - gcloud config set project agisit2425-project-g19
+      - gcloud config set container/cluster cluster-1
+      - gcloud config set compute/zone us-west1
+      - gcloud container clusters get-credentials agisit2425-project-g19-gke --region us-west1 --project agisit2425-project-g19
+      - kubectl delete pod --selector="app=solana" --namespace=application 
 
 deploy-monero-service:
     stage: deploy
