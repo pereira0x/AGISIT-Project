@@ -55,5 +55,5 @@ app.get("/", async (req, res) => {
 });
 
 app.listen(80, () => {
-  console.log("moneroService started listening at port 80");
+  console.log("moneroService listening at port 80");
 });

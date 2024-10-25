@@ -89,9 +89,7 @@ build-frontend-service:
 
 deploy-frontend-service:
   stage: deploy
-  image:
-    name: bitnami/kubectl:latest
-    entrypoint: [""]
+  image: google/cloud-sdk
   script:
       - gcloud auth activate-service-account --key-file=$gcp_key
       - gcloud config set project agisit2425-project-g19
@@ -107,9 +105,7 @@ deploy-frontend-service:
 
 deploy-bitcoin-service:
     stage: deploy
-    image:
-      name: bitnami/kubectl:latest
-      entrypoint: [""]
+    image: google/cloud-sdk
     script:
       - gcloud auth activate-service-account --key-file=$gcp_key
       - gcloud config set project agisit2425-project-g19
@@ -125,9 +121,7 @@ deploy-bitcoin-service:
 
 deploy-ethereum-service:
     stage: deploy
-    image:
-      name: bitnami/kubectl:latest
-      entrypoint: [""]
+    image: google/cloud-sdk
     script:
       - gcloud auth activate-service-account --key-file=$gcp_key
       - gcloud config set project agisit2425-project-g19
@@ -159,9 +153,7 @@ deploy-solana-service:
 
 deploy-monero-service:
     stage: deploy
-    image:
-      name: bitnami/kubectl:latest
-      entrypoint: [""]
+    image: google/cloud-sdk
     script:
       - gcloud auth activate-service-account --key-file=$gcp_key
       - gcloud config set project agisit2425-project-g19

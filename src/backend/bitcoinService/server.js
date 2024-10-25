@@ -64,5 +64,5 @@ app.get("/", async (req, res) => {
  */
 
 app.listen(80, () => {
-  console.log("bitcoinService started listening at port 80");
+  console.log("bitcoinService listening at port 80");
 });
