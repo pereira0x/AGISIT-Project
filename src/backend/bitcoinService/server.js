@@ -17,7 +17,7 @@ const pool = new Pool({
 
 // Function to write to Postgres database
 async function writeToPostgres(price) {
-  const logText = `A volume of Bitcoin was requested. The price is ${price}$.`;
+  const logText = `A volume of Bitcoin was requested. The price is ${price}$. Expensive!`;
 
   const query = {
     text: "INSERT INTO transactions (log) VALUES ($1)",
